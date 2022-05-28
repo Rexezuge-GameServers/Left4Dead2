@@ -27,5 +27,6 @@ ENV PORT=27015 \
     HOSTNAME="Left4DevOps L4D2" \
     STEAMGROUP=39122167
 
-ADD entrypoint.sh entrypoint.sh
-ENTRYPOINT ./entrypoint.sh
+ADD entrypoint.sh .Entrypoint.sh
+ENTRYPOINT ./.Entrypoint.sh
+

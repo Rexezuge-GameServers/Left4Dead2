@@ -13,3 +13,4 @@ EOF
 
 # Start Game
 cd l4d2 && ./srcds_run -console -game left4dead2 -port "$PORT" +maxplayers "$PLAYERS" +map "$MAP"
+
