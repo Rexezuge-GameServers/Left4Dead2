@@ -5,9 +5,10 @@
 # Server Config
 cat > l4d2/left4dead2/cfg/server.cfg <<EOF
 hostname "${HOSTNAME}"
+motd_enabled 0
 sv_region ${REGION}
 sv_logecho 1
-motd_enabled 0
+sv_steamgroup ${STEAMGROUP}
 EOF
 
 # Start Game
