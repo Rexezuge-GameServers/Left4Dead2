@@ -17,6 +17,12 @@ RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output 
 # Removed Unused Dependency
 RUN apt autoremove --purge -y curl
 
+# Softlink Steam Library
+RUN mkdir -p .steam/sdk32/ \
+    && ln -s /linux32/steamclient.so /.steam/sdk32/steamclient.so \
+    && mkdir -p .steam/sdk64/ \
+    && ln -s /linux64/steamclient.so /.steam/sdk64/steamclient.so
+
 # Install Left4Dead 2
 RUN .SteamCMD/steamcmd.sh +force_install_dir ../.L4D2Content +login anonymous +app_update 222860 +quit
 
