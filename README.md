@@ -1,4 +1,7 @@
 # Left 4 Dead 2 Server Docker Image
+:x: **Left4DevOps.AmazonLinux Is No Longer Being Developed**
+
+:heavy_check_mark: **Rexezuge.Debian-Slim Is Actively Developing**
 
 ## Source
 [Github](https://github.com/Rexezuge-Forks/L4D2-Dedicated-Server)
