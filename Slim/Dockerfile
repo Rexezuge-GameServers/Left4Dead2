@@ -20,11 +20,9 @@ RUN apt autoremove --purge -y curl
 # Install Left4Dead 2
 RUN .SteamCMD/steamcmd.sh +force_install_dir ../.L4D2Content +login anonymous +app_update 222860 +quit
 
-# Bind Volume(s)
-RUN rm -rf /home/$USER/l4d2/left4dead2/addons \
-    && ln -s /addons /home/$USER/l4d2/left4dead2/addons \
-    && rm -rf /home/$USER/l4d2/left4dead2/ems \
-    && ln -s /ems /home/$USER/l4d2/left4dead2/ems
+# Remove Existing Folder(s) for Volume Mounting
+RUN rm -rf /.L4D2Content/left4dead2/addons \
+    && rm -rf /.L4D2Content/left4dead2/ems
 
 # Port Forwarding
 #   Only Game Server Port is Open by Default
@@ -33,7 +31,7 @@ RUN rm -rf /home/$USER/l4d2/left4dead2/addons \
 EXPOSE 27015/udp
 
 # Volume
-VOLUME /addons /ems
+VOLUME /.L4D2Content/left4dead2/addons /.L4D2Content/left4dead2/ems
 
 # Environment(s)
 ENV PORT=27015 \
