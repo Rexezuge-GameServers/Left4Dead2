@@ -43,5 +43,5 @@ ENV PORT=27015 \
     STEAMGROUP=0
 
 ## Set Entrypoint
-ADD entrypoint.sh .Entrypoint.sh
+ADD Entrypoint.sh .Entrypoint.sh
 ENTRYPOINT ./.Entrypoint.sh
