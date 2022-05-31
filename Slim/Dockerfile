@@ -39,8 +39,8 @@ ENV PORT=27015 \
     PLAYERS=8 \
     MAP="c14m1_junkyard" \
     REGION=255 \
-    HOSTNAME="Left4DevOps L4D2" \
-    STEAMGROUP=39122167
+    HOSTNAME="Community Left4Dead 2 Server" \
+    STEAMGROUP=0
 
 ## Set Entrypoint
 ADD entrypoint.sh .Entrypoint.sh
