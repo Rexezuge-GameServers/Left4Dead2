@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update Game
-SteamCMD/steamcmd.sh +force_install_dir ../.L4D2Content +login anonymous +app_update 222860 +quit
+SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +login anonymous +app_update 222860 +quit
 
 # Server Config
 cat > L4D2Content/left4dead2/cfg/server.cfg <<EOF
