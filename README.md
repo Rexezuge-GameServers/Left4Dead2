@@ -9,7 +9,7 @@
 ## Docker CMD
 ```docker
 docker volume create L4D2Server_DATA
-docker run -p 27015:27015/tcp -p 27015:27015/udp -v L4D2Server_DATA:/L4D2Content --name L4D2Server rexezuge/l4d2:<CommitID>
+docker run -p 27015:27015/udp -v L4D2Server_DATA:/L4D2Content --name L4D2Server rexezuge/l4d2:<CommitID>
 ```
 
 ## Ports
@@ -35,9 +35,5 @@ To help hint to Steam where your server is located, set the `REGION` environment
 | Africa          | 7        |
 | World (Default) | 255      |
 
-## Custom Addons
-If you wanted to play a custom campaign on your server, you can mount a directory with any custom content into the `/home/louis/l4d2/left4dead2/addons/` directory.
-
-e.g. If your working directory had a TourOfTerror folder:
-
-`docker run -v TourOfTerror:/home/louis/l4d2/left4dead2/addons/`...
+## Addons
+Move `.vpk` files to `/L4D2Content/left4dead2/addons`
