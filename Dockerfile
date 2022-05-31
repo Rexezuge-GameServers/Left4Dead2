@@ -16,10 +16,12 @@ RUN mkdir -p .steam/sdk32/ && ln -s ~/linux32/steamclient.so ~/.steam/sdk32/stea
     && mkdir -p .steam/sdk64/ && ln -s ~/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
 RUN ./steamcmd.sh +login anonymous +force_install_dir ./l4d2 +app_update 222860 +quit
 RUN rm -rf /home/louis/l4d2/left4dead2/addons \
-    && ln -s /addons /home/louis/l4d2/left4dead2/addons
+    && ln -s /addons /home/louis/l4d2/left4dead2/addons \
+    && rm -rf /home/louis/l4d2/left4dead2/ems \
+    && ln -s /ems /home/louis/l4d2/left4dead2/ems
 
 EXPOSE 27015/tcp 27015/udp
-VOLUME /addons
+VOLUME /addons /ems
 ENV PORT=27015 \
     PLAYERS=8 \
     MAP="c14m1_junkyard" \
