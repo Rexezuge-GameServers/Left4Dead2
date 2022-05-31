@@ -31,7 +31,8 @@ RUN rm -rf /.L4D2Content/left4dead2/addons \
 EXPOSE 27015/udp
 
 # Volume
-VOLUME /.L4D2Content/left4dead2/addons /.L4D2Content/left4dead2/ems
+VOLUME /.L4D2Content/left4dead2/addons \
+       /.L4D2Content/left4dead2/ems
 
 # Environment(s)
 ENV PORT=27015 \
