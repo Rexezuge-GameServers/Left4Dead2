@@ -7,11 +7,6 @@ RUN dpkg --add-architecture i386 \
     && apt install -y curl lib32gcc-s1 libc6-i386 \
     && apt clean
 
-# Add Working User
-RUN useradd steam
-WORKDIR /home/steam
-USER steam
-
 # Extract SteamCMD
 RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz \
     && mkdir .SteamCMD \
