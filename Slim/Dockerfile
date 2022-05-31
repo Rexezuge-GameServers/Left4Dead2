@@ -23,7 +23,7 @@ RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output 
 RUN apt autoremove --purge -y curl
 
 # Install Left4Dead 2
-RUN .SteamCMD/steamcmd.sh +force_install_dir ./.L4D2Content +login anonymous +app_update 222860 +quit
+RUN .SteamCMD/steamcmd.sh +force_install_dir ../.L4D2Content +login anonymous +app_update 222860 +quit
 
 # Bind Volume(s)
 RUN rm -rf /home/$USER/l4d2/left4dead2/addons \
