@@ -9,10 +9,10 @@ RUN dpkg --add-architecture i386 \
 
 # Extract SteamCMD
 RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz \
-    && mkdir .SteamCMD \
-    && tar -xzf steamcmd.tar.gz -C .SteamCMD \
+    && mkdir SteamCMD \
+    && tar -xzf steamcmd.tar.gz -C SteamCMD \
     && rm steamcmd.tar.gz \
-    && .SteamCMD/steamcmd.sh +quit
+    && SteamCMD/steamcmd.sh +quit
 
 # Removed Unused Dependency
 RUN apt autoremove --purge -y curl
@@ -24,11 +24,11 @@ RUN mkdir -p .steam/sdk32/ \
     && ln -s /linux64/steamclient.so /.steam/sdk64/steamclient.so
 
 # Install Left4Dead 2
-RUN .SteamCMD/steamcmd.sh +force_install_dir ../.L4D2Content +login anonymous +app_update 222860 +quit
+RUN SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +login anonymous +app_update 222860 +quit
 
 # Remove Existing Folder(s) for Volume Mounting
-RUN rm -rf /.L4D2Content/left4dead2/addons \
-    && rm -rf /.L4D2Content/left4dead2/ems
+RUN rm -rf /L4D2Content/left4dead2/addons \
+    && rm -rf /L4D2Content/left4dead2/ems
 
 # Port Forwarding
 #   Only Game Server Port is Open by Default
@@ -37,8 +37,8 @@ RUN rm -rf /.L4D2Content/left4dead2/addons \
 EXPOSE 27015/udp
 
 # Volume
-VOLUME /.L4D2Content/left4dead2/addons \
-       /.L4D2Content/left4dead2/ems
+VOLUME /L4D2Content/left4dead2/addons \
+       /L4D2Content/left4dead2/ems
 
 # Environment(s)
 ENV PORT=27015 \
