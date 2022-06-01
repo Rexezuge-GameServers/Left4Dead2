@@ -18,10 +18,10 @@ RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output 
 RUN apt autoremove --purge -y curl
 
 # Softlink Steam Library
-RUN mkdir -p .steam/sdk32/ \
-    && ln -s /linux32/steamclient.so /.steam/sdk32/steamclient.so \
-    && mkdir -p .steam/sdk64/ \
-    && ln -s /linux64/steamclient.so /.steam/sdk64/steamclient.so
+RUN mkdir ~/.steam/sdk32/ \
+    && ln -s /SteamCMD/linux32/steamclient.so ~/.steam/sdk32/steamclient.so \
+    && mkdir ~/.steam/sdk64/ \
+    && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
 
 # Volume Mounting Directory
 RUN mkdir L4D2Content
