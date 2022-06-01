@@ -40,7 +40,7 @@ ENV PORT=27015 \
     PLAYERS=8 \
     MAP="c14m1_junkyard" \
     REGION=255 \
-    HOSTNAME="Community Left4Dead 2 Server" \
+    HOSTNAME="Community Left4Dead 2 World Server" \
     STEAMGROUP=0
 
 ## Set Entrypoint
