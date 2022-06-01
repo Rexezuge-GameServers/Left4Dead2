@@ -41,7 +41,8 @@ ENV PORT=27015 \
     MAP="c14m1_junkyard" \
     REGION=255 \
     HOSTNAME="Community Left4Dead 2 World Server" \
-    STEAMGROUP=0
+    STEAMGROUP=0 \
+    SECURESERVER=1
 
 ## Set Entrypoint
 ADD Entrypoint.sh .Entrypoint.sh

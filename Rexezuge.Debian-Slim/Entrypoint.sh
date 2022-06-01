@@ -13,4 +13,9 @@ sv_steamgroup ${STEAMGROUP}
 EOF
 
 # Start Game
-L4D2Content/srcds_run -console -game left4dead2 -port "$PORT" +maxplayers "$PLAYERS" +map "$MAP"
+if [ "$SECURE" = 1 ]
+then
+  L4D2Content/srcds_run -console -game left4dead2 -port "$PORT" +maxplayers "$PLAYERS" +map "$MAP"
+else
+  L4D2Content/srcds_run -console -game left4dead2 -port "$PORT" +maxplayers "$PLAYERS" +map "$MAP" +insecure
+fi
