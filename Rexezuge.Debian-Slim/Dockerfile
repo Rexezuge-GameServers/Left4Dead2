@@ -2,28 +2,28 @@ FROM debian:11-slim
 
 # Volume Mounting Directory
 RUN mkdir SteamCMD \
-    && mkdir L4D2Content
+ && mkdir L4D2Content
 
 # Add Dependency
 RUN dpkg --add-architecture i386 \
-    && apt update \
-    && apt upgrade -y \
-    && apt install -y curl lib32gcc-s1 libc6-i386 \
-    && apt clean
+ && apt update \
+ && apt upgrade -y \
+ && apt install -y curl lib32gcc-s1 libc6-i386 \
+ && apt clean
 
 # Extract SteamCMD
 RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz \
-    && tar -xzf steamcmd.tar.gz -C SteamCMD \
-    && rm steamcmd.tar.gz
+ && tar -xzf steamcmd.tar.gz -C SteamCMD \
+ && rm steamcmd.tar.gz
 
 # Removed Unused Dependency
 RUN apt autoremove --purge -y curl
 
 # Softlink Steam Library
 RUN mkdir ~/.steam/sdk32/ \
-    && ln -s /SteamCMD/linux32/steamclient.so ~/.steam/sdk32/steamclient.so \
-    && mkdir ~/.steam/sdk64/ \
-    && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
+ && ln -s /SteamCMD/linux32/steamclient.so ~/.steam/sdk32/steamclient.so \
+ && mkdir ~/.steam/sdk64/ \
+ && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
 
 # Port Forwarding
 #   Only Game Server Port is Open by Default
