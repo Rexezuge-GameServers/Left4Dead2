@@ -1,5 +1,9 @@
 FROM debian:11-slim
 
+# Volume Mounting Directory
+RUN mkdir SteamCMD \
+    && mkdir L4D2Content
+
 # Add Dependency
 RUN dpkg --add-architecture i386 \
     && apt update \
@@ -9,10 +13,8 @@ RUN dpkg --add-architecture i386 \
 
 # Extract SteamCMD
 RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz \
-    && mkdir SteamCMD \
     && tar -xzf steamcmd.tar.gz -C SteamCMD \
-    && rm steamcmd.tar.gz \
-    && SteamCMD/steamcmd.sh +quit
+    && rm steamcmd.tar.gz
 
 # Removed Unused Dependency
 RUN apt autoremove --purge -y curl
@@ -23,9 +25,6 @@ RUN mkdir ~/.steam/sdk32/ \
     && mkdir ~/.steam/sdk64/ \
     && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
 
-# Volume Mounting Directory
-RUN mkdir L4D2Content
-
 # Port Forwarding
 #   Only Game Server Port is Open by Default
 #   Uncomment the Following Line if You Want RCON
@@ -33,7 +32,7 @@ RUN mkdir L4D2Content
 EXPOSE 27015/udp
 
 # Volume
-VOLUME /L4D2Content
+VOLUME /SteamCMD /L4D2Content
 
 # Environment(s)
 ENV PORT=27015 \
