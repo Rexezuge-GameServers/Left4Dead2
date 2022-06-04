@@ -4,6 +4,8 @@
 SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +login anonymous +app_update 222860 +quit
 
 # Write Server Config
+if [ "$FORCEOVERWRITE" = 1 ]
+then
 cat > L4D2Content/left4dead2/cfg/server.cfg << EOF
 hostname "${HOSTNAME}"
 motd_enabled 0
@@ -11,6 +13,7 @@ sv_region ${REGION}
 sv_logecho 1
 sv_steamgroup ${STEAMGROUP}
 EOF
+fi
 
 # Start Game
 if [ "$SECURESERVER" = 1 ]
