@@ -22,8 +22,8 @@ fi
 if [ "$SECURESERVER" = 1 ]
 then
   echo "Starting VAC Secured Server"
-  L4D2Content/srcds_run -console -game left4dead2 -port "$PORT" +maxplayers "$PLAYERS" +map "$MAP"
+  L4D2Content/srcds_run -console -game left4dead2 -port "$PORT" +maxplayers "$PLAYERS" +map "$MAP" -secure -noipx
 else
   echo "Starting Unsecured Server"
-  L4D2Content/srcds_run -console -game left4dead2 -port "$PORT" +maxplayers "$PLAYERS" +map "$MAP" -insecure
+  L4D2Content/srcds_run -console -game left4dead2 -port "$PORT" +maxplayers "$PLAYERS" +map "$MAP" -insecure -noipx
 fi
