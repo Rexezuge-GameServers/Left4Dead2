@@ -1,5 +1,8 @@
 FROM debian:11-slim
 
+# Image Label(s)
+LABEL Source="https://github.com/Rexezuge-Forks/L4D2-Dedicated-Server"
+
 # Volume Mounting Directory
 RUN mkdir SteamCMD \
  && mkdir L4D2Content
