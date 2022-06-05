@@ -12,6 +12,7 @@ motd_enabled 0
 sv_region ${REGION}
 sv_logecho 1
 sv_steamgroup ${STEAMGROUP}
+sv_gametypes "${GAMETYPE}"
 EOF
 fi
 
