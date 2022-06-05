@@ -1,8 +1,8 @@
 FROM debian:11-slim
 
 # Image Label(s)
-LABEL VRESION="Rolling Release"
-LABEL Source="https://github.com/Rexezuge-Forks/L4D2-Dedicated-Server"
+LABEL VRESION="Rolling Release" \
+      UPSTREAM="https://github.com/Rexezuge-Forks/L4D2-Dedicated-Server"
 
 # Volume Mounting Directory
 RUN mkdir SteamCMD \
