@@ -13,6 +13,7 @@ sv_region ${REGION}
 sv_logecho 1
 sv_steamgroup ${STEAMGROUP}
 sv_gametypes "${GAMETYPE}"
+sv_consistency ${CONSISTENCY}
 EOF
 fi
 

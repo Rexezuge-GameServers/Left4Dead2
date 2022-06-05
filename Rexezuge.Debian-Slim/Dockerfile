@@ -47,6 +47,7 @@ ENV PORT=27015 \
     HOSTNAME="Community Left4Dead 2 World Server" \
     STEAMGROUP=0 \
     GAMETYPE="coop,versus" \
+    CONSISTENCY=1 \
     SECURESERVER=1 \
     FORCEOVERWRITE=1
 
