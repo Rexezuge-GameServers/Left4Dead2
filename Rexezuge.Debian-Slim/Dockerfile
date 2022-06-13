@@ -40,16 +40,16 @@ EXPOSE 27015/udp
 VOLUME /SteamCMD /L4D2Content
 
 # Environment(s)
-ENV PORT=27015 \
-    PLAYERS=8 \
-    MAP="c14m1_junkyard" \
-    REGION=255 \
-    HOSTNAME="Community Left4Dead 2 World Server" \
-    STEAMGROUP=0 \
-    GAMETYPE="coop,versus" \
-    CONSISTENCY=1 \
-    SECURESERVER=1 \
-    FORCEOVERWRITE=1
+ENV SRV_PORT=27015 \
+    SRV_PLAYERS=8 \
+    SRV_MAP="c14m1_junkyard" \
+    SRV_SECURESERVER=1 \
+    CFG_FORCEOVERWRITE=1 \
+    CFG_HOSTNAME="Community Left4Dead 2 World Server" \
+    CFG_REGION=255 \
+    CFG_STEAMGROUP=0 \
+    CFG_GAMETYPE="coop,versus" \
+    CFG_CONSISTENCY=1
 
 ## Set Entrypoint
 ADD Entrypoint.sh .Entrypoint.sh
