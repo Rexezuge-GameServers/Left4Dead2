@@ -14,6 +14,7 @@ sv_region ${CFG_REGION}
 sv_steamgroup ${CFG_STEAMGROUP}
 sv_gametypes "${CFG_GAMETYPE}"
 sv_consistency ${CFG_CONSISTENCY}
+sv_voiceenable ${CFG_VOICEENABLED}
 EOF
 fi
 

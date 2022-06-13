@@ -49,7 +49,8 @@ ENV SRV_PORT=27015 \
     CFG_REGION=255 \
     CFG_STEAMGROUP=0 \
     CFG_GAMETYPE="coop,versus" \
-    CFG_CONSISTENCY=1
+    CFG_CONSISTENCY=1 \
+    CFG_VOICEENABLED=1
 
 ## Set Entrypoint
 ADD Entrypoint.sh .Entrypoint.sh
