@@ -1,9 +1,5 @@
 FROM debian:11-slim
 
-# Image Label(s)
-LABEL VRESION="Rolling Release" \
-      UPSTREAM="https://github.com/Rexezuge-Forks/L4D2-Dedicated-Server"
-
 # Volume Mounting Directory
 RUN mkdir SteamCMD \
  && mkdir L4D2Content
@@ -30,6 +26,17 @@ RUN mkdir ~/.steam \
  && mkdir ~/.steam/sdk64/ \
  && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
 
+# Add Files
+ADD Entrypoint.sh .Entrypoint.sh
+
+# Remove Intermediate Layer
+FROM scratch
+COPY --from=0 / /
+
+# Image Label(s)
+LABEL VRESION="Rolling Release" \
+      UPSTREAM="https://github.com/Rexezuge-Forks/L4D2-Dedicated-Server"
+
 # Port Forwarding
 #   Only Game Server Port is Open by Default
 #   Uncomment the Following Line if You Want RCON
@@ -53,5 +60,4 @@ ENV SRV_PORT=27015 \
     CFG_VOICEENABLED=1
 
 ## Set Entrypoint
-ADD Entrypoint.sh .Entrypoint.sh
 ENTRYPOINT ./.Entrypoint.sh
