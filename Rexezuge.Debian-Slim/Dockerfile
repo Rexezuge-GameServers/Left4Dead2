@@ -31,6 +31,9 @@ RUN mkdir ~/.steam \
 # Disable Package Manager
 RUN chmod -x /usr/bin/apt
 
+# Disable Change Mode
+RUN chmod -x /usr/bin/chmod
+
 # Add Files
 ADD Entrypoint.sh /.Entrypoint.sh
 
