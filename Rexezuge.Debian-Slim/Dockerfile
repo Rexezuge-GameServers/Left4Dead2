@@ -28,6 +28,9 @@ RUN mkdir ~/.steam \
  && mkdir ~/.steam/sdk64/ \
  && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
 
+# Disable Package Manager
+RUN chmod -x /usr/bin/apt
+
 # Add Files
 ADD Entrypoint.sh .Entrypoint.sh
 
