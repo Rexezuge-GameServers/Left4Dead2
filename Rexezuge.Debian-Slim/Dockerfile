@@ -32,11 +32,14 @@ RUN mkdir ~/.steam \
 RUN chmod -x /usr/bin/apt
 
 # Add Files
-ADD Entrypoint.sh .Entrypoint.sh
+ADD Entrypoint.sh /.Entrypoint.sh
 
 # Remove Intermediate Layer
 FROM scratch
 COPY --from=0 / /
+
+# Make Entrypoint Executable
+RUN chmod +x /.Entrypoint.sh
 
 # Image Label(s)
 LABEL VRESION="Rolling Release" \
@@ -65,4 +68,4 @@ ENV SRV_PORT=27015 \
     CFG_VOICEENABLED=1
 
 # Set Entrypoint
-ENTRYPOINT ["/bin/bash", "./.Entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "/.Entrypoint.sh"]
