@@ -8,8 +8,7 @@ RUN mkdir SteamCMD \
 RUN dpkg --add-architecture i386 \
  && apt update \
  && apt upgrade -y \
- && apt install -y curl lib32gcc-s1 libc6-i386 \
- && apt clean
+ && apt install -y curl lib32gcc-s1 libc6-i386
 
 # Extract SteamCMD
 RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz \
@@ -17,7 +16,10 @@ RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output 
  && rm steamcmd.tar.gz
 
 # Removed Unused Dependency
-RUN apt autoremove --purge -y curl
+RUN apt autoremove --purge -y curl \
+ && apt clean \
+ && apt autoremove --purge -y \
+ && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 # Softlink Steam Library
 RUN mkdir ~/.steam \
@@ -59,5 +61,5 @@ ENV SRV_PORT=27015 \
     CFG_CONSISTENCY=1 \
     CFG_VOICEENABLED=1
 
-## Set Entrypoint
+# Set Entrypoint
 ENTRYPOINT ["/bin/bash", "./.Entrypoint.sh"]
