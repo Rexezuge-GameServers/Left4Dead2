@@ -28,12 +28,6 @@ RUN mkdir ~/.steam \
  && mkdir ~/.steam/sdk64/ \
  && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
 
-# Disable Package Manager
-RUN chmod -x /usr/bin/apt
-
-# Disable Change Mode
-RUN chmod -x /usr/bin/chmod
-
 # Add Files
 ADD Entrypoint.sh /.Entrypoint.sh
 
@@ -69,6 +63,12 @@ ENV SRV_PORT=27015 \
     CFG_GAMETYPE="coop,versus" \
     CFG_CONSISTENCY=1 \
     CFG_VOICEENABLED=1
+
+# Disable Package Manager
+RUN chmod -x /usr/bin/apt
+
+# Disable Change Mode
+RUN chmod -x /usr/bin/chmod
 
 # Set Entrypoint
 ENTRYPOINT ["/bin/bash", "-c", "/.Entrypoint.sh"]
