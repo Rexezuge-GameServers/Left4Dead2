@@ -8,7 +8,7 @@ RUN mkdir SteamCMD \
 RUN dpkg --add-architecture i386 \
  && apt update \
  && apt upgrade -y \
- && apt install -y curl lib32gcc-s1 libc6-i386
+ && apt install -y --no-install-recommends curl lib32gcc-s1 libc6-i386
 
 # Extract SteamCMD
 RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz \
@@ -32,7 +32,7 @@ RUN mkdir ~/.steam \
 ADD Entrypoint.sh /.Entrypoint.sh
 
 # Uninstall Package Manager
-RUN apt install -y ca-certificates \
+RUN apt install -y --no-install-recommends ca-certificates \
  && apt autoremove --purge apt --allow-remove-essential -y \
  && rm -rf /var/log/apt /etc/apt
 
