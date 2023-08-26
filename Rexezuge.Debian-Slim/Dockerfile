@@ -64,11 +64,9 @@ ENV SRV_PORT=27015 \
     CFG_CONSISTENCY=1 \
     CFG_VOICEENABLED=1
 
-# Disable Package Manager
-RUN chmod -x /usr/bin/apt
-
-# Disable Change Mode
-RUN chmod -x /usr/bin/chmod
+# Uninstall Package Manager
+RUN apt autoremove --purge apt --allow-remove-essential -y \
+ && rm -rf /var/log/apt /etc/apt
 
 # Set Entrypoint
 ENTRYPOINT ["/bin/bash", "-c", "/.Entrypoint.sh"]
