@@ -31,6 +31,11 @@ RUN mkdir ~/.steam \
 # Add Files
 ADD Entrypoint.sh /.Entrypoint.sh
 
+# Uninstall Package Manager
+RUN apt install -y ca-certificates \
+ && apt autoremove --purge apt --allow-remove-essential -y \
+ && rm -rf /var/log/apt /etc/apt
+
 # Remove Intermediate Layer
 FROM scratch
 COPY --from=0 / /
@@ -63,11 +68,6 @@ ENV SRV_PORT=27015 \
     CFG_GAMETYPE="coop,versus" \
     CFG_CONSISTENCY=1 \
     CFG_VOICEENABLED=1
-
-# Uninstall Package Manager
-RUN apt install -y ca-certificates \
- && apt autoremove --purge apt --allow-remove-essential -y \
- && rm -rf /var/log/apt /etc/apt
 
 # Set Entrypoint
 ENTRYPOINT ["/bin/bash", "-c", "/.Entrypoint.sh"]
