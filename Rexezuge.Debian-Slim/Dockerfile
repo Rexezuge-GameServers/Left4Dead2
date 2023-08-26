@@ -65,7 +65,8 @@ ENV SRV_PORT=27015 \
     CFG_VOICEENABLED=1
 
 # Uninstall Package Manager
-RUN apt autoremove --purge apt --allow-remove-essential -y \
+RUN apt install -y ca-certificates \
+ && apt autoremove --purge apt --allow-remove-essential -y \
  && rm -rf /var/log/apt /etc/apt
 
 # Set Entrypoint
