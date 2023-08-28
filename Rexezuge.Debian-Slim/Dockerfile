@@ -70,4 +70,4 @@ ENV SRV_PORT=27015 \
     CFG_VOICEENABLED=1
 
 # Set Entrypoint
-ENTRYPOINT ["/bin/bash", "-c", "/.Entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "exec /.Entrypoint.sh"]
