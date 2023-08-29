@@ -1,8 +1,8 @@
 FROM debian:12-slim
 
 # Volume Mounting Directory
-RUN mkdir SteamCMD \
- && mkdir L4D2Content
+RUN mkdir /SteamCMD \
+ && mkdir /L4D2Content
 
 # Add Dependency
 RUN dpkg --add-architecture i386 \
@@ -21,13 +21,6 @@ RUN apt autoremove --purge -y curl \
  && apt autoremove --purge -y \
  && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-# Softlink Steam Library
-RUN mkdir ~/.steam \
- && mkdir ~/.steam/sdk32/ \
- && ln -s /SteamCMD/linux32/steamclient.so ~/.steam/sdk32/steamclient.so \
- && mkdir ~/.steam/sdk64/ \
- && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
-
 # Add Files
 ADD Entrypoint.sh /.Entrypoint.sh
 
@@ -36,12 +29,33 @@ RUN apt install -y --no-install-recommends ca-certificates \
  && apt autoremove --purge apt --allow-remove-essential -y \
  && rm -rf /var/log/apt /etc/apt
 
+# Setup User
+RUN useradd --uid 27015 -m steam
+
+# Grant Permission to User
+RUN chown -R steam:steam /SteamCMD \
+ && chown -R steam:steam /L4D2Content
+
+# Change User
+WORKDIR /home/steam
+USER steam
+
+# Softlink Steam Library
+RUN mkdir ~/.steam \
+ && mkdir ~/.steam/sdk32/ \
+ && ln -s /SteamCMD/linux32/steamclient.so ~/.steam/sdk32/steamclient.so \
+ && mkdir ~/.steam/sdk64/ \
+ && ln -s /SteamCMD/linux64/steamclient.so ~/.steam/sdk64/steamclient.so
+
 # Remove Intermediate Layer
 FROM scratch
 COPY --from=0 / /
 
 # Make Entrypoint Executable
 RUN chmod +x /.Entrypoint.sh
+
+# Change User
+USER steam
 
 # Image Label(s)
 LABEL VRESION="Rolling Release" \
