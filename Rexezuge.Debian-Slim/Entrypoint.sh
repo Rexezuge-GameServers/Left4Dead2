@@ -27,4 +27,5 @@ fi
   +map "$SRV_MAP" \
   $( [ "$SRV_SECURESERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
   -noipx \
-  < /dev/null
+  < /dev/null \
+  > /dev/null
