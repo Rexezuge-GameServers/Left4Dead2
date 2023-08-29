@@ -26,4 +26,5 @@ fi
   +maxplayers "$SRV_PLAYERS" \
   +map "$SRV_MAP" \
   $( [ "$SRV_SECURESERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
-  -noipx
+  -noipx \
+  < /dev/null
