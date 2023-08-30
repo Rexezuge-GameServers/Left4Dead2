@@ -81,7 +81,8 @@ ENV SRV_PORT=27015 \
     CFG_STEAMGROUP=0 \
     CFG_GAMETYPE="coop,versus" \
     CFG_CONSISTENCY=1 \
-    CFG_VOICEENABLED=1
+    CFG_VOICEENABLED=1 \
+    CFG_REPAIR_SERVER=0
 
 # Set Entrypoint
 ENTRYPOINT ["/bin/bash", "-c", "exec /.Entrypoint.sh"]
