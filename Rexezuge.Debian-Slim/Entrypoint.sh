@@ -12,12 +12,15 @@ then
 fi
 
 # Update Game
+if [ "$SRV_UPDATE_SERVER" = 1 ]
+then
 /SteamCMD/steamcmd.sh \
   +force_install_dir ../L4D2Content \
   +login anonymous \
   +app_update 222860 \
   +quit \
   </dev/null
+fi
 
 # Write Server Config
 if [ "$CFG_FORCE_OVERWRITE" = 1 ]
