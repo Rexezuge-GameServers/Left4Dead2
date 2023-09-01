@@ -44,4 +44,4 @@ fi
   $( [ "$SRV_SECURESERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
   -noipx \
   </dev/null \
-  >/dev/null
+  2>/dev/null
