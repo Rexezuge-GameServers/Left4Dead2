@@ -38,7 +38,7 @@ EOF
 fi
 
 # Start Game
-/L4D2Content/srcds_run \
+exec /L4D2Content/srcds_run \
   -console \
   -game left4dead2 \
   -port "$SRV_PORT" \
