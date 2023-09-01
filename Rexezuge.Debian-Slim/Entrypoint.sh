@@ -3,11 +3,19 @@
 # Validate Game
 if [ "$CFG_REPAIR_SERVER" = 1 ]
 then
-/SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +login anonymous +app_update 222860 validate +quit
+/SteamCMD/steamcmd.sh \
+  +force_install_dir ../L4D2Content \
+  +login anonymous \
+  +app_update 222860 validate \
+  +quit
 fi
 
 # Update Game
-/SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +login anonymous +app_update 222860 +quit
+/SteamCMD/steamcmd.sh \
+  +force_install_dir ../L4D2Content \
+  +login anonymous \
+  +app_update 222860 \
+  +quit
 
 # Write Server Config
 if [ "$CFG_FORCEOVERWRITE" = 1 ]
