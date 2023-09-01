@@ -9,7 +9,7 @@
 ## Docker CMD
 ```docker
 docker volume create L4D2Server_DATA
-docker run -p 27015:27015/udp -v L4D2Server_DATA:/L4D2Content --name L4D2Server rexezuge/l4d2:<CommitID>
+docker run -p 27015:27015/udp -v L4D2Server_DATA:/L4D2Content --cap-drop=all --name L4D2Server rexezuge/l4d2:<CommitID>
 ```
 
 ## Ports
