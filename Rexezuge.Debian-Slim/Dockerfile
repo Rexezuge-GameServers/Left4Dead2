@@ -64,7 +64,7 @@ LABEL VRESION="Rolling Release" \
 # Port Forwarding
 #   Only Game Server Port is Open by Default
 #   Uncomment the Following Line if You Want RCON
-#   EXPOST 27015/tcp
+#   EXPOSE 27015/tcp
 EXPOSE 27015/udp
 
 # Volume
