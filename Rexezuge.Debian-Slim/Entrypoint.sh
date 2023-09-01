@@ -7,7 +7,8 @@ then
   +force_install_dir ../L4D2Content \
   +login anonymous \
   +app_update 222860 validate \
-  +quit
+  +quit \
+  </dev/null
 fi
 
 # Update Game
@@ -15,7 +16,8 @@ fi
   +force_install_dir ../L4D2Content \
   +login anonymous \
   +app_update 222860 \
-  +quit
+  +quit \
+  </dev/null
 
 # Write Server Config
 if [ "$CFG_FORCEOVERWRITE" = 1 ]
@@ -41,5 +43,5 @@ fi
   +map "$SRV_MAP" \
   $( [ "$SRV_SECURESERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
   -noipx \
-  < /dev/null \
-  > /dev/null
+  </dev/null \
+  >/dev/null
