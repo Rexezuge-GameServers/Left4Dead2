@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Validate Game
-if [ "$CFG_REPAIR_SERVER" = 1 ]
+if [ "$SRV_REPAIR_SERVER" = 1 ]
 then
 /SteamCMD/steamcmd.sh \
   +force_install_dir ../L4D2Content \
@@ -20,17 +20,17 @@ fi
   </dev/null
 
 # Write Server Config
-if [ "$CFG_FORCEOVERWRITE" = 1 ]
+if [ "$CFG_FORCE_OVERWRITE" = 1 ]
 then
 cat > /L4D2Content/left4dead2/cfg/server.cfg << EOF
 hostname "${CFG_HOSTNAME}"
 motd_enabled 0
 sv_logecho 1
 sv_region ${CFG_REGION}
-sv_steamgroup ${CFG_STEAMGROUP}
-sv_gametypes "${CFG_GAMETYPE}"
+sv_steamgroup ${CFG_STEAM_GROUP}
+sv_gametypes "${CFG_GAME_TYPE}"
 sv_consistency ${CFG_CONSISTENCY}
-sv_voiceenable ${CFG_VOICEENABLED}
+sv_voiceenable ${CFG_VOICE_ENABLED}
 EOF
 fi
 
@@ -41,7 +41,7 @@ fi
   -port "$SRV_PORT" \
   +maxplayers "$SRV_PLAYERS" \
   +map "$SRV_MAP" \
-  $( [ "$SRV_SECURESERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
+  $( [ "$SRV_SECURE_SERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
   -noipx \
   </dev/null \
   2>/dev/null

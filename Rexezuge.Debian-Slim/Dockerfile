@@ -74,15 +74,15 @@ VOLUME /SteamCMD /L4D2Content
 ENV SRV_PORT=27015 \
     SRV_PLAYERS=8 \
     SRV_MAP="c14m1_junkyard" \
-    SRV_SECURESERVER=1 \
-    CFG_FORCEOVERWRITE=1 \
+    SRV_SECURE_SERVER=1 \
+    CFG_FORCE_OVERWRITE=1 \
     CFG_HOSTNAME="Community Left4Dead 2 World Server" \
     CFG_REGION=255 \
-    CFG_STEAMGROUP=0 \
-    CFG_GAMETYPE="coop,versus" \
+    CFG_STEAM_GROUP=0 \
+    CFG_GAME_TYPE="coop,versus" \
     CFG_CONSISTENCY=1 \
-    CFG_VOICEENABLED=1 \
-    CFG_REPAIR_SERVER=0
+    CFG_VOICE_ENABLED=1 \
+    SRV_REPAIR_SERVER=0
 
 # Set Entrypoint
 ENTRYPOINT ["/bin/bash", "-c", "exec /.Entrypoint.sh"]
