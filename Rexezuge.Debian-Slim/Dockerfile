@@ -75,15 +75,15 @@ ENV SRV_PORT=27015 \
     SRV_PLAYERS=8 \
     SRV_MAP="c14m1_junkyard" \
     SRV_SECURE_SERVER=1 \
-    CFG_FORCE_OVERWRITE=1 \
+    SRV_REPAIR_SERVER=0 \
+    SRV_UPDATE_SERVER=0
+ENV CFG_FORCE_OVERWRITE=1 \
     CFG_HOSTNAME="Community Left4Dead 2 World Server" \
     CFG_REGION=255 \
     CFG_STEAM_GROUP=0 \
     CFG_GAME_TYPE="coop,versus" \
     CFG_CONSISTENCY=1 \
-    CFG_VOICE_ENABLED=1 \
-    SRV_REPAIR_SERVER=0 \
-    SRV_UPDATE_SERVER=0
+    CFG_VOICE_ENABLED=1
 
 # Set Entrypoint
 ENTRYPOINT ["/bin/bash", "-c", "exec /.Entrypoint.sh"]
