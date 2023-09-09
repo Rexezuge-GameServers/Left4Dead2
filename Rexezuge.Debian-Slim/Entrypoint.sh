@@ -28,12 +28,15 @@ then
 cat > /L4D2Content/left4dead2/cfg/server.cfg << EOF
 hostname "${CFG_HOSTNAME}"
 motd_enabled 0
-sv_logecho 1
 sv_region ${CFG_REGION}
 sv_steamgroup ${CFG_STEAM_GROUP}
 sv_gametypes "${CFG_GAME_TYPE}"
 sv_consistency ${CFG_CONSISTENCY}
 sv_voiceenable ${CFG_VOICE_ENABLED}
+
+// Logging
+sv_logecho 1
+sv_logfile ${CFG_LOGGING_TO_FILE}
 
 // Network Tweaks
 rate ${CFG_NETWORK_RATE}
