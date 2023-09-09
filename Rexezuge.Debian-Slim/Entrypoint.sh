@@ -34,6 +34,13 @@ sv_steamgroup ${CFG_STEAM_GROUP}
 sv_gametypes "${CFG_GAME_TYPE}"
 sv_consistency ${CFG_CONSISTENCY}
 sv_voiceenable ${CFG_VOICE_ENABLED}
+
+// Network Tweaks
+rate ${CFG_NETWORK_RATE}
+sv_minrate ${CFG_NETWORK_MIN_RATE}
+sv_maxrate ${CFG_NETWORK_MAX_RATE}
+sv_mincmdrate ${CFG_NETWORK_MIN_CMD_RATE}
+sv_maxcmdrate ${CFG_NETWORK_MAX_CMD_RATE}
 EOF
 fi
 
