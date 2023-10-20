@@ -27,7 +27,8 @@ ADD Entrypoint.sh /.Entrypoint.sh
 # Uninstall Package Manager
 RUN apt install -y --no-install-recommends ca-certificates \
  && apt autoremove --purge apt --allow-remove-essential -y \
- && rm -rf /var/log/apt /etc/apt
+ && rm -rf /var/log/apt /etc/apt \
+ && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 # Setup User
 RUN useradd --uid 27015 -m steam
