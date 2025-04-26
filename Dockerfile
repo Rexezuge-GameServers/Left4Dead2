@@ -59,8 +59,7 @@ RUN chmod +x /.Entrypoint.sh
 USER steam
 
 # Image Label(s)
-LABEL VRESION="Rolling Release" \
-      UPSTREAM="https://github.com/Rexezuge-Forks/L4D2-Dedicated-Server"
+LABEL UPSTREAM="https://github.com/Rexezuge/L4D2-Dedicated-Server-Docker"
 
 # Port Forwarding
 #   Only Game Server Port is Open by Default
