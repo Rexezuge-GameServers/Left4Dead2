@@ -21,7 +21,7 @@ jobs:
     - name: Set image name and tags
       id: vars
       run: |
-        IMAGE_NAME=rexezuge/usagi-init
+        IMAGE_NAME=rexezuge/l4d2-server
         GIT_SHA=${{ github.sha }}
         echo "image_name=${IMAGE_NAME}" >> "$GITHUB_OUTPUT"
         echo "commit_sha=${GIT_SHA}" >> "$GITHUB_OUTPUT"
