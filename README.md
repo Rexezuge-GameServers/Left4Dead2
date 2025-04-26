@@ -5,8 +5,9 @@
 
 ## Docker CMD
 ```docker
+docker volume create SteamCMD_DATA
 docker volume create L4D2Server_DATA
-docker run -p 27015:27015/udp -v L4D2Server_DATA:/L4D2Content --name L4D2Server rexezuge/l4d2-server
+docker run -p 27015:27015/udp -v L4D2Server_DATA:/L4D2Content -v SteamCMD_DATA:/SteamCMD --name L4D2Server rexezuge/l4d2-server
 ```
 
 ## Ports
