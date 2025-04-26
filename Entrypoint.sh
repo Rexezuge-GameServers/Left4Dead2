@@ -10,6 +10,7 @@
 if [ "$SRV_REPAIR_SERVER" = 1 ]
 then
 /SteamCMD/steamcmd.sh \
+  +@sSteamCmdForcePlatformType linux \
   +force_install_dir ../L4D2Content \
   +login anonymous \
   +app_update 222860 validate \
@@ -21,6 +22,7 @@ fi
 if [ "$SRV_UPDATE_SERVER" = 1 ]
 then
 /SteamCMD/steamcmd.sh \
+  +@sSteamCmdForcePlatformType linux \
   +force_install_dir ../L4D2Content \
   +login anonymous \
   +app_update 222860 \
