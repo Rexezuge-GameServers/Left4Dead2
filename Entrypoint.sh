@@ -11,7 +11,7 @@ then
 /SteamCMD/steamcmd.sh \
   +force_install_dir ../L4D2Content \
   +login anonymous \
-  +@sSteamCmdForcePlatformType windows \ # Temporary Workaround
+  +@sSteamCmdForcePlatformType windows \
   +app_update 222860 validate\
   +@sSteamCmdForcePlatformType linux \
   +app_update 222860 validate \
@@ -25,7 +25,7 @@ then
 /SteamCMD/steamcmd.sh \
   +force_install_dir ../L4D2Content \
   +login anonymous \
-  +@sSteamCmdForcePlatformType windows \ # Temporary Workaround
+  +@sSteamCmdForcePlatformType windows \
   +app_update 222860 \
   +@sSteamCmdForcePlatformType linux \
   +app_update 222860 validate\
