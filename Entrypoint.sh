@@ -3,16 +3,17 @@
 # ERROR! Failed to install app '222860' (Invalid platform)
 # Temporary Workaround
 # https://github.com/ValveSoftware/steam-for-linux/issues/11522
-/SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +@sSteamCmdForcePlatformType windows +quit
-/SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +@sSteamCmdForcePlatformType linux +quit
+# https://github.com/Left4DevOps/l4d2-docker/pull/15/commits/ac2105ead52081b478b96ea9961e8474587bb522
 
 # Validate Game
 if [ "$SRV_REPAIR_SERVER" = 1 ]
 then
 /SteamCMD/steamcmd.sh \
-  +@sSteamCmdForcePlatformType linux \
   +force_install_dir ../L4D2Content \
   +login anonymous \
+  +@sSteamCmdForcePlatformType windows \ # Temporary Workaround
+  +app_update 222860 validate\
+  +@sSteamCmdForcePlatformType linux \
   +app_update 222860 validate \
   +quit \
   </dev/null
@@ -22,10 +23,12 @@ fi
 if [ "$SRV_UPDATE_SERVER" = 1 ]
 then
 /SteamCMD/steamcmd.sh \
-  +@sSteamCmdForcePlatformType linux \
   +force_install_dir ../L4D2Content \
   +login anonymous \
+  +@sSteamCmdForcePlatformType windows \ # Temporary Workaround
   +app_update 222860 \
+  +@sSteamCmdForcePlatformType linux \
+  +app_update 222860 validate\
   +quit \
   </dev/null
 fi
