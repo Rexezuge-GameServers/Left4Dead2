@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# ERROR! Failed to install app '222860' (Invalid platform)
+# Temporary Workaround
+# https://github.com/ValveSoftware/steam-for-linux/issues/11522
+/SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +@sSteamCmdForcePlatformType windows
+/SteamCMD/steamcmd.sh +force_install_dir ../L4D2Content +@sSteamCmdForcePlatformType linux
+
 # Validate Game
 if [ "$SRV_REPAIR_SERVER" = 1 ]
 then
