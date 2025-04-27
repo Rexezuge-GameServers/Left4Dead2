@@ -42,6 +42,7 @@ hostname "${CFG_INFORMATION_HOSTNAME}"
 motd_enabled 0
 sv_region ${CFG_INFORMATION_REGION}
 sv_steamgroup ${CFG_INFORMATION_STEAM_GROUP}
+sv_steamgroup_exclusive 1
 
 // Settings
 sv_gametypes "${CFG_SETTINGS_GAME_TYPE}"
