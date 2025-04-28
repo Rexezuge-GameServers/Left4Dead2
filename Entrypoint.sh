@@ -68,6 +68,7 @@ exec /L4D2Content/srcds_run \
   -port "$SRV_PORT" \
   -maxplayers "$SRV_PLAYERS" \
   +map "$SRV_MAP" \
+  -difficulty expert \
   $( [ "$SRV_SECURE_SERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
   -noipx \
   </dev/null \
