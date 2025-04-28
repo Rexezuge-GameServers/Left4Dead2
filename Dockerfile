@@ -24,6 +24,9 @@ RUN apt autoremove --purge -y curl \
 # Add Files
 ADD Entrypoint.sh /.Entrypoint.sh
 
+# Make Entrypoint Executable
+RUN chmod +x /.Entrypoint.sh
+
 # Uninstall Package Manager
 RUN apt install -y --no-install-recommends ca-certificates \
  && apt autoremove --purge apt --allow-remove-essential -y \
@@ -50,10 +53,8 @@ RUN mkdir ~/.steam \
 
 # Remove Intermediate Layer
 FROM scratch
-COPY --from=0 / /
 
-# Make Entrypoint Executable
-RUN chmod +x /.Entrypoint.sh
+COPY --from=0 / /
 
 # Change User
 USER steam
