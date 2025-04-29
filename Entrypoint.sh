@@ -66,7 +66,6 @@ exec /L4D2Content/srcds_run \
   -console \
   -game left4dead2 \
   -port "$SRV_PORT" \
-  -maxplayers "$SRV_PLAYERS" \
   +map "$SRV_MAP" \
   -difficulty expert \
   $( [ "$SRV_SECURE_SERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \

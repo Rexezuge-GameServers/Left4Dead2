@@ -73,7 +73,6 @@ VOLUME /SteamCMD /L4D2Content
 
 # Environment(s)
 ENV SRV_PORT=27015 \
-    SRV_PLAYERS=8 \
     SRV_MAP="c14m1_junkyard" \
     SRV_SECURE_SERVER=1 \
     SRV_REPAIR_SERVER=0 \
