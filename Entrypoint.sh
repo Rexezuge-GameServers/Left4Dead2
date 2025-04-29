@@ -67,7 +67,7 @@ exec /L4D2Content/srcds_run \
   -game left4dead2 \
   -port "$SRV_PORT" \
   +map "$SRV_MAP" \
-  -difficulty expert \
+  +z_difficulty expert \
   $( [ "$SRV_SECURE_SERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
   -noipx \
   </dev/null \
