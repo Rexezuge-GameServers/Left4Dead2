@@ -1,4 +1,16 @@
-FROM debian:12-slim
+FROM debian:12-slim as Downloader
+
+RUN mkdir -p /tmp/SteamCMD/
+
+RUN apt update \
+ && apt install -y --no-install-recommends curl
+
+# Extract SteamCMD
+RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz \
+ && tar -xzf steamcmd.tar.gz -C /tmp/SteamCMD/ \
+ && rm steamcmd.tar.gz
+
+FROM debian:12-slim as Runtime
 
 # Volume Mounting Directory
 RUN mkdir /SteamCMD \
@@ -8,18 +20,9 @@ RUN mkdir /SteamCMD \
 RUN dpkg --add-architecture i386 \
  && apt update \
  && apt upgrade -y \
- && apt install -y --no-install-recommends curl lib32gcc-s1 libc6-i386
+ && apt install -y --no-install-recommends lib32gcc-s1 libc6-i386
 
-# Extract SteamCMD
-RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz \
- && tar -xzf steamcmd.tar.gz -C SteamCMD \
- && rm steamcmd.tar.gz
-
-# Removed Unused Dependency
-RUN apt autoremove --purge -y curl \
- && apt clean \
- && apt autoremove --purge -y \
- && rm -rf /var/lib/{apt,dpkg,cache,log}/
+COPY --from=Downloader /tmp/SteamCMD/ /SteamCMD/
 
 # Add Files
 ADD Entrypoint.sh /.Entrypoint.sh
@@ -29,6 +32,8 @@ RUN chmod +x /.Entrypoint.sh
 
 # Uninstall Package Manager
 RUN apt install -y --no-install-recommends ca-certificates \
+ && apt clean \
+ && apt autoremove --purge -y \
  && apt autoremove --purge apt --allow-remove-essential -y \
  && rm -rf /var/log/apt /etc/apt \
  && rm -rf /var/lib/{apt,dpkg,cache,log}/
@@ -54,7 +59,7 @@ RUN mkdir ~/.steam \
 # Remove Intermediate Layer
 FROM scratch
 
-COPY --from=0 / /
+COPY --from=Runtime / /
 
 # Change User
 USER steam
