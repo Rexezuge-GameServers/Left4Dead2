@@ -1,4 +1,4 @@
-FROM debian:12-slim as Downloader
+FROM debian:12-slim AS downloader
 
 RUN mkdir -p /tmp/SteamCMD/
 
@@ -10,7 +10,7 @@ RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output 
  && tar -xzf steamcmd.tar.gz -C /tmp/SteamCMD/ \
  && rm steamcmd.tar.gz
 
-FROM debian:12-slim as Runtime
+FROM debian:12-slim AS runtime
 
 # Volume Mounting Directory
 RUN mkdir /SteamCMD \
@@ -22,7 +22,7 @@ RUN dpkg --add-architecture i386 \
  && apt upgrade -y \
  && apt install -y --no-install-recommends lib32gcc-s1 libc6-i386
 
-COPY --from=Downloader /tmp/SteamCMD/ /SteamCMD/
+COPY --from=downloader /tmp/SteamCMD/ /SteamCMD/
 
 # Add Files
 ADD Entrypoint.sh /.Entrypoint.sh
@@ -59,7 +59,7 @@ RUN mkdir ~/.steam \
 # Remove Intermediate Layer
 FROM scratch
 
-COPY --from=Runtime / /
+COPY --from=runtime / /
 
 # Change User
 USER steam
