@@ -62,6 +62,8 @@ EOF
 fi
 
 # Start Game
+export LD_LIBRARY_PATH=/L4D2Content/bin:/L4D2Content/left4dead2/bin:$LD_LIBRARY_PATH:/SteamCMD/linux32:/SteamCMD/linux64
+cd /L4D2Content
 exec /L4D2Content/srcds_linux \
   -console \
   -game left4dead2 \
