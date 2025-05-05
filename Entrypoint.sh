@@ -1,42 +1,38 @@
 #!/bin/bash
 
-# ERROR! Failed to install app '222860' (Invalid platform)
-# Temporary Workaround
+# Workaround for invalid platform error (see related GitHub issues)
 # https://github.com/ValveSoftware/steam-for-linux/issues/11522
 # https://github.com/Left4DevOps/l4d2-docker/pull/15/commits/ac2105ead52081b478b96ea9961e8474587bb522
 
+# Shared SteamCMD arguments
+STEAMCMD_COMMON_ARGS="+force_install_dir ../L4D2Content +login anonymous"
+
+# Function: Run SteamCMD with platform override and optional validation
+run_steamcmd_update() {
+  local validate_flag=$1
+  /SteamCMD/steamcmd.sh \
+    $STEAMCMD_COMMON_ARGS \
+    +@sSteamCmdForcePlatformType windows \
+    +app_update 222860 ${validate_flag} \
+    +@sSteamCmdForcePlatformType linux \
+    +app_update 222860 ${validate_flag} \
+    +quit \
+    </dev/null
+}
+
 # Validate Game
-if [ "$SRV_REPAIR_SERVER" = 1 ]
-then
-/SteamCMD/steamcmd.sh \
-  +force_install_dir ../L4D2Content \
-  +login anonymous \
-  +@sSteamCmdForcePlatformType windows \
-  +app_update 222860 validate\
-  +@sSteamCmdForcePlatformType linux \
-  +app_update 222860 validate \
-  +quit \
-  </dev/null
+if [ "$SRV_REPAIR_SERVER" = 1 ]; then
+  run_steamcmd_update validate
 fi
 
-# Update Game
-if [ "$SRV_UPDATE_SERVER" = 1 ]
-then
-/SteamCMD/steamcmd.sh \
-  +force_install_dir ../L4D2Content \
-  +login anonymous \
-  +@sSteamCmdForcePlatformType windows \
-  +app_update 222860 \
-  +@sSteamCmdForcePlatformType linux \
-  +app_update 222860 validate\
-  +quit \
-  </dev/null
+# Update Game (skip validate for performance)
+if [ "$SRV_UPDATE_SERVER" = 1 ]; then
+  run_steamcmd_update ""
 fi
 
-# Write Server Config
-if [ "$CFG_RESTORE_DEFAULT" = 1 ]
-then
-cat > /L4D2Content/left4dead2/cfg/server.cfg << EOF
+# Restore Default Server Config
+if [ "$CFG_RESTORE_DEFAULT" = 1 ]; then
+  cat > /L4D2Content/left4dead2/cfg/server.cfg << EOF
 // Server Info
 hostname "${CFG_INFORMATION_HOSTNAME}"
 sv_steamgroup ${CFG_INFORMATION_STEAM_GROUP}
@@ -78,10 +74,10 @@ fps_max 0
 EOF
 fi
 
-# Start Game
+# Start Game Server
 export LD_LIBRARY_PATH=/L4D2Content/bin:/L4D2Content/left4dead2/bin:$LD_LIBRARY_PATH:/SteamCMD/linux32:/SteamCMD/linux64
 cd /L4D2Content
-exec /L4D2Content/srcds_linux \
+exec ./srcds_linux \
   -console \
   -game left4dead2 \
   -port "$SRV_PORT" \
@@ -89,5 +85,4 @@ exec /L4D2Content/srcds_linux \
   +z_difficulty expert \
   $( [ "$SRV_SECURE_SERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
   -noipx \
-  </dev/null \
-  2>/dev/null
+  </dev/null 2>/dev/null
