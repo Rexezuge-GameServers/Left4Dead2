@@ -86,7 +86,7 @@ ENV CFG_RESTORE_DEFAULT=1 \
     CFG_INFORMATION_HOSTNAME="Community Left4Dead 2 World Server" \
     CFG_INFORMATION_REGION=255 \
     CFG_INFORMATION_STEAM_GROUP=0 \
-    CFG_SETTINGS_GAME_TYPE="coop,versus"
+    CFG_SETTINGS_GAME_TYPE="coop,realism"
 
 # Set Entrypoint
 ENTRYPOINT ["/bin/bash", "-c", "exec /.Entrypoint.sh"]
