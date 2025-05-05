@@ -34,30 +34,30 @@ then
 fi
 
 # Write Server Config
-if [ "$CFG_FORCE_OVERWRITE" = 1 ]
+if [ "$CFG_RESTORE_DEFAULT" = 1 ]
 then
 cat > /L4D2Content/left4dead2/cfg/server.cfg << EOF
 // Information
 hostname "${CFG_INFORMATION_HOSTNAME}"
-motd_enabled 0
 sv_region ${CFG_INFORMATION_REGION}
 sv_steamgroup ${CFG_INFORMATION_STEAM_GROUP}
+motd_enabled 0
 
 // Settings
 sv_gametypes "${CFG_SETTINGS_GAME_TYPE}"
-sv_consistency ${CFG_SETTINGS_CONSISTENCY}
-sv_voiceenable ${CFG_SETTINGS_VOICE_ENABLED}
+sv_consistency 0
+sv_voiceenable 0
 
 // Logging
 sv_logecho 1
-sv_logfile ${CFG_LOGGING_TO_FILE}
+sv_logfile 0
 
 // Network Tweaks
-rate ${CFG_NETWORK_RATE}
-sv_minrate ${CFG_NETWORK_MIN_RATE}
-sv_maxrate ${CFG_NETWORK_MAX_RATE}
-sv_mincmdrate ${CFG_NETWORK_MIN_CMD_RATE}
-sv_maxcmdrate ${CFG_NETWORK_MAX_CMD_RATE}
+rate 10000
+sv_minrate 5000
+sv_maxrate 30000
+sv_mincmdrate 20
+sv_maxcmdrate 33
 EOF
 fi
 
