@@ -20,23 +20,7 @@ To change the port used inside the container change the `SRV_PORT` environment v
 
 ## Hostname
 
-This identifies your server in the server browser.  By default it is set to "Community Left4Dead 2 World Server".  Change it by setting the `CFG_INFORMATION_HOSTNAME` environment variable.
-
-## Region
-
-To help hint to Steam where your server is located, set the `CFG_INFORMATION_REGION` environment variable as one of the following numeric regions:
-
-| Location        | REGION   |
-| --------------- | -------- |
-| East Coast USA  | 0        |
-| West Coast USA  | 1        |
-| South America   | 2        |
-| Europe          | 3        |
-| Asia            | 4        |
-| Australia       | 5        |
-| Middle East     | 6        |
-| Africa          | 7        |
-| World (Default) | 255      |
+This identifies your server in the server browser.  By default it is set to _"Community Left4Dead 2 World Server"_.  Change it by setting the `CFG_INFORMATION_HOSTNAME` environment variable.
 
 ## Addons
 
