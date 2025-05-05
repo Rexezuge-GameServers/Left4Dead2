@@ -39,8 +39,8 @@ then
 cat > /L4D2Content/left4dead2/cfg/server.cfg << EOF
 // Server Info
 hostname "${CFG_INFORMATION_HOSTNAME}"
-sv_region ${CFG_INFORMATION_REGION}
 sv_steamgroup ${CFG_INFORMATION_STEAM_GROUP}
+sv_region 255
 motd_enabled 0
 
 // Game Settings
