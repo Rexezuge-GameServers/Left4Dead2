@@ -58,6 +58,13 @@ sv_minrate 5000
 sv_maxrate 30000
 sv_mincmdrate 20
 sv_maxcmdrate 33
+
+// Security
+sv_cheats 0
+sv_lan 0
+sv_allow_lobby_connect_only 0
+sv_allow_wait_command 0
+
 EOF
 fi
 
