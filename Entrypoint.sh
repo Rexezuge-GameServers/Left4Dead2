@@ -52,13 +52,13 @@ sv_logecho 1
 sv_logfile 0
 
 // Network Performance
-rate 30000
-sv_minrate 10000
-sv_maxrate 30000
-sv_mincmdrate 30
-sv_maxcmdrate 66
-sv_minupdaterate 30
-sv_maxupdaterate 66
+rate 20000
+sv_minrate 5000
+sv_maxrate 20000
+sv_mincmdrate 20
+sv_maxcmdrate 40
+sv_minupdaterate 15
+sv_maxupdaterate 30
 
 // Security
 sv_cheats 0
@@ -70,7 +70,7 @@ sv_allow_wait_command 0
 sv_timeout 60
 sv_maxplayers 8
 sv_forcepreload 1
-fps_max 0
+fps_max 60
 EOF
 fi
 
