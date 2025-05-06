@@ -75,14 +75,16 @@ EOF
 fi
 
 # Start Game Server
-export LD_LIBRARY_PATH=/L4D2Content/bin:/L4D2Content/left4dead2/bin:$LD_LIBRARY_PATH:/SteamCMD/linux32:/SteamCMD/linux64
-cd /L4D2Content
-exec ./srcds_linux \
-  -console \
-  -game left4dead2 \
-  -port "$SRV_PORT" \
-  +map "$SRV_MAP" \
-  +z_difficulty expert \
-  $( [ "$SRV_SECURE_SERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
-  -noipx \
-  </dev/null 2>/dev/null
+if [ "$SRV_LAUNCH_SERVER" = 1 ]; then
+  export LD_LIBRARY_PATH=/L4D2Content/bin:/L4D2Content/left4dead2/bin:$LD_LIBRARY_PATH:/SteamCMD/linux32:/SteamCMD/linux64
+  cd /L4D2Content
+  exec ./srcds_linux \
+    -console \
+    -game left4dead2 \
+    -port "$SRV_PORT" \
+    +map "$SRV_MAP" \
+    +z_difficulty expert \
+    $( [ "$SRV_SECURE_SERVER" = 1 ] && echo "-secure" || echo "-insecure" ) \
+    -noipx \
+    </dev/null 2>/dev/null
+fi
