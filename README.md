@@ -8,6 +8,7 @@
 
 ```bash
 sudo mkdir /L4D2Server_DATA
+sudo chown 27015:27015 /L4D2Server_DATA
 docker volume create SteamCMD_DATA
 docker run -d \
     --name L4D2-Server \
