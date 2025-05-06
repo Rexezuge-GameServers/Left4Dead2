@@ -50,3 +50,10 @@ sudo chown $USER:$USER /L4D2Server_DATA/left4dead2/addons
 ```bash
 rsync -rvz --delete . <remote>:/L4D2Server_DATA/left4dead2/addons
 ```
+
+## Tips for Clients
+
+### Avoid Heap Memory Overload
+
+1. Download DXVK: [https://github.com/doitsujin/dxvk](https://github.com/doitsujin/dxvk)
+2. Install DXVK: Place the `d3d9.dll` and `dxgi.dll` files from the `x32` folder inside the archive into the game's root directory.
