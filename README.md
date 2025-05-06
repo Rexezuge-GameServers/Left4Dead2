@@ -15,6 +15,7 @@ docker run -d \
     -v /L4D2Server_DATA:/L4D2Content \
     -v SteamCMD_DATA:/SteamCMD \
     --cap-drop=ALL \
+    --log-driver=journald \
     rexezuge/l4d2-server
 ```
 
