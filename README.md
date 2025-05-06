@@ -9,7 +9,13 @@
 ```bash
 sudo mkdir /L4D2Server_DATA
 docker volume create SteamCMD_DATA
-docker run --name L4D2-Server -d -p 27015:27015/udp -v /L4D2Server_DATA:/L4D2Content -v SteamCMD_DATA:/SteamCMD rexezuge/l4d2-server
+docker run -d \
+    --name L4D2-Server \
+    -p 27015:27015/udp \
+    -v /L4D2Server_DATA:/L4D2Content \
+    -v SteamCMD_DATA:/SteamCMD \
+    --cap-drop=ALL \
+    rexezuge/l4d2-server
 ```
 
 ## Ports
