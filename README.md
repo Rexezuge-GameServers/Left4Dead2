@@ -17,7 +17,7 @@ docker run -d \
     -v SteamCMD_DATA:/SteamCMD \
     --cap-drop=ALL \
     --log-driver=journald \
-    rexezuge/l4d2-server
+    rexezugegameservers/left4dead2
 ```
 
 ## Ports
