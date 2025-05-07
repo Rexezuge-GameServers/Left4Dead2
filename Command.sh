@@ -20,12 +20,10 @@ run_steamcmd_update() {
     </dev/null
 }
 
-# Validate Game
+# If server repair is requested, perform a full validation update using SteamCMD.
+# Otherwise, if only a regular update is requested, perform a faster update without validation.
 if [ "$SRV_REPAIR_SERVER" = 1 ]; then
   run_steamcmd_update validate
-fi
-
-# Update Game (skip validate for performance)
-if [ "$SRV_UPDATE_SERVER" = 1 ]; then
+elif [ "$SRV_UPDATE_SERVER" = 1 ]; then
   run_steamcmd_update ""
 fi
