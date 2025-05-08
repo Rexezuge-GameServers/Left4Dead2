@@ -3,6 +3,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+  schedule:
+    - cron: '0 2 * * 2'
 
 jobs:
   build-and-push:
@@ -23,17 +25,25 @@ jobs:
       run: |
         IMAGE_NAME=rexezugegameservers/left4dead2
         GIT_SHA=${{ github.sha }}
+        UNIX_TS=$(date +%s)
+
+        if [[ "${{ github.event_name }}" == "schedule" ]]; then
+          TAG="auto-${UNIX_TS}"
+        else
+          TAG="${GIT_SHA}"
+        fi
+
         echo "image_name=${IMAGE_NAME}" >> "$GITHUB_OUTPUT"
-        echo "commit_sha=${GIT_SHA}" >> "$GITHUB_OUTPUT"
+        echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
 
     - name: Build Docker image
       run: |
         docker build . \
           --file Dockerfile \
-          --tag ${{ steps.vars.outputs.image_name }}:${{ steps.vars.outputs.commit_sha }} \
+          --tag ${{ steps.vars.outputs.image_name }}:${{ steps.vars.outputs.tag }} \
           --tag ${{ steps.vars.outputs.image_name }}:latest
 
     - name: Push Docker image to Docker Hub
       run: |
-        docker push ${{ steps.vars.outputs.image_name }}:${{ steps.vars.outputs.commit_sha }}
+        docker push ${{ steps.vars.outputs.image_name }}:${{ steps.vars.outputs.tag }}
         docker push ${{ steps.vars.outputs.image_name }}:latest
