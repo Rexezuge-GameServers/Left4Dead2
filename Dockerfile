@@ -22,6 +22,8 @@ RUN chmod +x /.Command.sh
 
 FROM rexezugegameservers/left4dead2-base
 
+USER steam
+
 COPY --from=builder /.Command.sh /.Command.sh
 
 COPY --from=downloader /tmp/SteamCMD/ /SteamCMD/
