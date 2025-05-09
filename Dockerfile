@@ -10,7 +10,7 @@ RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output 
  && tar -xzf steamcmd.tar.gz -C /tmp/SteamCMD/ \
  && rm steamcmd.tar.gz
 
-RUN chmod +x /tmp/SteamCMD/steamcmd.sh
+RUN chown -R 27015:27015 /tmp/SteamCMD/
 
 FROM alpine:3 AS builder
 
@@ -21,8 +21,6 @@ ADD Command.sh /.Command.sh
 RUN chmod +x /.Command.sh
 
 FROM rexezugegameservers/left4dead2-base
-
-USER steam
 
 COPY --from=builder /.Command.sh /.Command.sh
 
