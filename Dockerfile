@@ -10,6 +10,8 @@ RUN curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output 
  && tar -xzf steamcmd.tar.gz -C /tmp/SteamCMD/ \
  && rm steamcmd.tar.gz
 
+RUN chmod +x /tmp/SteamCMD/steamcmd.sh
+
 FROM alpine:3 AS builder
 
 # Add File(s)
