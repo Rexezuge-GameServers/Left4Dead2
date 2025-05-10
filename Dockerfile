@@ -35,6 +35,7 @@ VOLUME /SteamCMD /L4D2Content
 # Environment(s)
 ENV SRV_REPAIR_SERVER=0 \
     SRV_UPDATE_SERVER=1
+ENV CFG_RESTORE_DEFAULT=1
 
 # Set CMD
 CMD ["/.Command.sh"]
