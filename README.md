@@ -1,15 +1,22 @@
-# Left 4 Dead 2 Server Docker Image
+# Left4Dead2
 
 ## Source
 
-[Github/Rexezuge/L4D2-Dedicated-Server-Docker](https://github.com/Rexezuge/L4D2-Dedicated-Server-Docker)
+[Github/Rexezuge-GameServers/Left4Dead2](https://github.com/Rexezuge-GameServers/Left4Dead2)
 
 ## Launch Server
+
+👉 Setup Persist Volumes
 
 ```bash
 sudo mkdir /L4D2Server_DATA
 sudo chown 27015:27015 /L4D2Server_DATA
 docker volume create SteamCMD_DATA
+```
+
+✅ Launch Server
+
+```
 docker run -d \
     --name L4D2-Server \
     -p 27015:27015/udp \
