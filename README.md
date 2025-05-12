@@ -68,9 +68,13 @@ rsync -rvz --delete . <remote>:/L4D2Server_DATA/left4dead2/addons
 
 ## Tips for Resource Constrained Servers
 
-### Limit Resource Usage
+> Server with `0.25` vCPU + `1` GB RAM
 
-> `0.25` vCPU + `1` GB RAM
+### Limit Resource Usage
 
 1. Reserve `512` MB RAM for Game Server
 2. Limit CPU Time to `0.2`
+
+### Reduce Network Overhead
+
+1. Use `host` Network to Run Docker Container
