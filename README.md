@@ -65,3 +65,12 @@ rsync -rvz --delete . <remote>:/L4D2Server_DATA/left4dead2/addons
 
 1. Download DXVK: [https://github.com/doitsujin/dxvk](https://github.com/doitsujin/dxvk)
 2. Install DXVK: Place the `d3d9.dll` and `dxgi.dll` files from the `x32` folder inside the archive into the game's root directory.
+
+## Tips for Resource Constrained Servers
+
+### Limit Resource Usage
+
+> `0.25` vCPU + `1` GB RAM
+
+1. Reserve `512` MB RAM for Game Server
+2. Limit CPU Time to `0.2`
