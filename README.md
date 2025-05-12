@@ -74,7 +74,3 @@ rsync -rvz --delete . <remote>:/L4D2Server_DATA/left4dead2/addons
 
 1. Reserve `512` MB RAM for Game Server
 2. Limit CPU Time to `0.2`
-
-### Reduce Network Overhead
-
-1. Use `host` Network to Run Docker Container
