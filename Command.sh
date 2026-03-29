@@ -5,7 +5,12 @@
 # https://github.com/Left4DevOps/l4d2-docker/pull/15/commits/ac2105ead52081b478b96ea9961e8474587bb522
 
 # Shared SteamCMD arguments
-STEAMCMD_COMMON_ARGS="+force_install_dir ../L4D2Content +login anonymous"
+STEAMCMD_COMMON_ARGS="+force_install_dir ../L4D2Content"
+if [[ -n "$STEAM_USERNAME" && -n "$STEAM_PASSWORD" ]]; then
+  STEAMCMD_COMMON_ARGS+=" +login $STEAM_USERNAME $STEAM_PASSWORD"
+else
+  STEAMCMD_COMMON_ARGS+=" +login anonymous"
+fi
 
 # Function: Run SteamCMD with platform override and optional validation
 run_steamcmd_update() {
