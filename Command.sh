@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Workaround for invalid platform error (see related GitHub issues)
-# https://github.com/ValveSoftware/steam-for-linux/issues/11522
-# https://github.com/Left4DevOps/l4d2-docker/pull/15/commits/ac2105ead52081b478b96ea9961e8474587bb522
-
 # Shared SteamCMD arguments
 STEAMCMD_COMMON_ARGS="+force_install_dir ../L4D2Content"
 if [[ -n "$STEAM_USERNAME" && -n "$STEAM_PASSWORD" ]]; then
@@ -17,8 +13,6 @@ run_steamcmd_update() {
   local validate_flag=$1
   /SteamCMD/steamcmd.sh \
     $STEAMCMD_COMMON_ARGS \
-    +@sSteamCmdForcePlatformType windows \
-    +app_update 222860 ${validate_flag} \
     +@sSteamCmdForcePlatformType linux \
     +app_update 222860 ${validate_flag} \
     +quit \
